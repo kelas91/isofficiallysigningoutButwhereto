@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IX-1 | Next Chapter</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+overflow-x:hidden;
+background:#000;
+color:white;
+}
+
+.hero{
+height:100vh;
+background:url("cover.jpg") center center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+animation:zoom 18s ease-in-out infinite alternate;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(2px);
+}
+
+@keyframes zoom{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
+
+.content{
+position:relative;
+z-index:2;
+padding:20px;
+max-width:900px;
+}
+
+.logo{
+font-size:90px;
+font-weight:700;
+color:#FFD84D;
+text-shadow:
+0 0 10px #FFD84D,
+0 0 20px #FFD84D,
+0 0 40px #FFC400,
+0 0 70px #FFC400;
+}
+
+.title{
+font-size:55px;
+font-weight:700;
+line-height:1.2;
+margin-top:10px;
+text-shadow:0 0 15px rgba(255,215,0,.4);
+}
+
+.subtitle{
+font-size:26px;
+margin-top:15px;
+}
+
+.desc{
+margin-top:25px;
+font-size:18px;
+opacity:.9;
+}
+
+.start{
+margin-top:45px;
+padding:18px 45px;
+font-size:20px;
+font-weight:700;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:linear-gradient(135deg,#FFD84D,#FFB800);
+color:#222;
+transition:.35s;
+}
+
+.start:hover{
+transform:translateY(-5px) scale(1.05);
+box-shadow:
+0 0 20px #FFD84D,
+0 0 40px rgba(255,215,0,.7);
+}
+
+.arrow{
+margin-top:35px;
+font-size:35px;
+animation:updown 1.6s infinite;
+}
+
+@keyframes updown{
+0%{transform:translateY(0);}
+50%{transform:translateY(12px);}
+100%{transform:translateY(0);}
+}
+
+section{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("cover.jpg") center center/cover no-repeat;
+position:relative;
+}
+
+section::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(6px);
+}
+
+.box{
+position:relative;
+z-index:2;
+width:500px;
+max-width:90%;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.25);
+border-radius:25px;
+padding:40px;
+text-align:center;
+box-shadow:0 0 35px rgba(255,215,0,.3);
+}
+
+.choose{
+
+background:url("cover.jpg") center center/cover no-repeat;
+
+position:relative;
+
+}
+
+.choose::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(6px);
+
+}
+
+.choose .box{
+
+position:relative;
+
+z-index:2;
+
+}
+
+.choose-text{
+
+margin:15px 0 30px;
+
+opacity:.9;
+
+}
+
+
+#student{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:15px;
+
+font-size:17px;
+
+margin-bottom:30px;
+
+outline:none;
+
+cursor:pointer;
+
+}
+
+.goBtn{
+
+width:100%;
+
+padding:18px;
+
+font-size:18px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:50px;
+
+cursor:pointer;
+
+background:linear-gradient(135deg,#FFD84D,#FFB800);
+
+transition:.3s;
+
+}
+
+.goBtn:hover{
+
+transform:scale(1.04);
+
+box-shadow:0 0 25px gold;
+
+}
+
+.hidden{
+display:none;
+}
+.loading{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.loading-box{
+width:500px;
+max-width:90%;
+text-align:center;
+}
+
+.progress{
+height:20px;
+background:#333;
+border-radius:20px;
+overflow:hidden;
+margin-top:30px;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#FFD84D,#FFB800);
+transition:.3s;
+}
+
+.result h1{
+font-size:45px;
+color:#FFD84D;
+text-shadow:0 0 25px gold;
+}
+
+.school{
+font-size:26px;
+margin:20px;
+}
+
+.confetti{
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+width:12px;
+
+height:12px;
+
+background:#FFD84D;
+
+z-index:9999;
+
+animation:explode 1.5s ease-out forwards;
+
+}
+
+
+@keyframes explode{
+
+0%{
+
+transform:translate(-50%,-50%) scale(1);
+
+opacity:1;
+
+}
+
+
+100%{
+
+transform:
+translate(
+calc(-50% + var(--x)),
+calc(-50% + var(--y))
+)
+rotate(720deg);
+
+opacity:0;
+
+}
+
+}
+@keyframes fall{
+
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+
+}
+.memory{
+width:100%;
+border-radius:20px;
+margin-bottom:20px;
+box-shadow:0 0 25px rgba(255,215,0,.35);
+transition:.3s;
+}
+
+.memory:hover{
+transform:scale(1.02);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div class="content">
+
+<div class="logo">
+IX-1
+</div>
+
+<div class="title">
+is officially signing out.
+</div>
+
+<div class="subtitle">
+But where to?
+</div>
+
+<div class="desc">
+One class • 35 Students • Countless Memories ❤️
+</div>
+
+<button class="start" onclick="startJourney()">
+Start Journey
+</button>
+
+<div class="arrow">
+↓
+</div>
+
+</div>
+
+</div>
+
+<section id="choose" class="hidden choose">
+
+<div class="box">
+
+<h1>Where Are You Going?</h1>
+
+<p class="choose-text">
+Choose your name to reveal your next destination.
+</p>
+
+<select id="student">
+
+
+<option value="">-- Select Your Name --</option>
+
+<option>Febri</option>
+<option>Abiyyu</option>
+
+<option>Mahen</option>
+<option>Kevis</option>
+<option>Sarah</option>
+<option>Fahira</option>
+<option>Yasmien</option>
+<option>Herlin</option>
+<option>Vannesa</option>
+<option>Azzam</option>
+<option>Naajih</option>
+<option>Filza</option>
+<option>Ninis</option>
+<option>Dea</option>
+<option>Rafan</option>
+
+<option>Nadia</option>
+<option>Ayudya</option>
+<option>Zidan</option>
+<option>Anindita</option>
+<option>Capri Ayu</option>
+<option>Salsa</option>
+<option>Icha</option>
+
+<option>Kevin</option>
+<option>Dara</option>
+
+<option>Aviza</option>
+
+<option>Yusuf</option>
+
+<option>Ester</option>
+
+<option>Jaziil</option>
+
+<option>Aisyah</option>
+<option>Vino</option>
+<option>Fadhil</option>
+<option>Asyifa</option>
+
+<option>Rani</option>
+
+<option>Ilham</option>
+
+<option>Salwa</option>
+
+</select>
+
+<button class="goBtn" onclick="showLoading()">🎓 See My Destination</button>
+
+</div>
+
+</section>
+
+<script>
+
+const database = {
+
+"Febri":"SMKN 12 Surabaya",
+"Abiyyu":"SMKN 12 Surabaya",
+
+"Mahen":"SMAN 1 Waru",
+"Kevis":"SMAN 1 Waru",
+"Sarah":"SMAN 1 Waru",
+"Fahira":"SMAN 1 Waru",
+"Yasmien":"SMAN 1 Waru",
+"Herlin":"SMAN 1 Waru",
+"Vannesa":"SMAN 1 Waru",
+"Azzam":"SMAN 1 Waru",
+"Naajih":"SMAN 1 Waru",
+"Filza":"SMAN 1 Waru",
+"Ninis":"SMAN 1 Waru",
+"Dea":"SMAN 1 Waru",
+"Rafan":"SMAN 1 Waru",
+
+"Nadia":"SMA 1 Gedangan",
+"Ayudya":"SMA 1 Gedangan",
+"Zidan":"SMA 1 Gedangan",
+"Anindita":"SMA 1 Gedangan",
+"Capri Ayu":"SMA 1 Gedangan",
+"Salsa":"SMA 1 Gedangan",
+"Icha":"SMA 1 Gedangan",
+
+"Kevin":"SMAN 1 Taman",
+"Dara":"SMAN 1 Taman",
+
+"Aviza":"MAN Surabaya",
+
+"Yusuf":"SMAN 16 Surabaya",
+
+"Ester":"SMKN 6 Surabaya",
+
+"Jaziil":"SMKN 3 Surabaya",
+
+"Aisyah":"SMA HangTuah 2 Surabaya",
+"Vino":"SMA HangTuah 2 Surabaya",
+"Fadhil":"SMA HangTuah 2 Surabaya",
+"Asyifa":"SMA HangTuah 2 Surabaya",
+
+"Rani":"Pondok Pesantren Bumi Sholawat",
+
+"Ilham":"SMK Dharma Siswa 1",
+
+"Salwa":"SMA Muhammadiyah 1 Taman"
+
+};
+
+
+
+function startJourney(){
+
+document.getElementById("choose")
+.classList.remove("hidden");
+
+
+document.getElementById("choose")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+
+function showLoading(){
+
+let student=document.getElementById("student").value;
+
+if(student==""){
+
+alert("Please choose your name first 😊");
+
+return;
+
+}
+
+showResult(student);
+
+}
+
+
+function showResult(student){
+
+
+document.body.insertAdjacentHTML(
+
+"beforeend",
+
+`
+
+<section id="result" class="choose">
+
+<div class="box result">
+
+
+<h1>
+🎉 Congratulations, ${student}!
+</h1>
+
+
+<div class="school">
+
+📚 Accepted at
+
+<br><br>
+
+<b>
+${database[student]}
+</b>
+
+
+</div>
+
+
+
+<p>
+
+"Hari ini bukan akhir dari perjalanan,
+melainkan awal dari mimpi yang lebih besar.
+
+Selamat atas langkah barumu di ${database[student]}.
+
+Teruslah belajar, berkarya,
+dan jangan pernah berhenti mengejar cita-cita.
+
+Semoga setiap tantangan menjadi pelajaran,
+setiap kegagalan menjadi kekuatan,
+dan setiap keberhasilan menjadi kebanggaan.
+
+Sampai jumpa di masa depan, ${student}.
+Kami bangga padamu! ❤️"
+
+</p>
+
+
+
+<br>
+
+<hr>
+
+<br>
+
+
+<h2>
+💌 Pesan untukmu
+</h2>
+
+
+<p>
+
+"Terima kasih telah menjadi bagian dari
+keluarga IX-1.
+
+Semoga kita semua dipertemukan lagi
+dalam versi terbaik diri kita."
+
+</p>
+
+
+<br>
+
+<hr>
+
+<br>
+
+<div class="ending">
+
+❤️
+
+<br><br>
+
+<h2>Once IX-1,<br>Always IX-1.</h2>
+
+<p>2023–2026</p>
+
+</div>
+
+<br><br>
+
+<button class="goBtn" onclick="showMemories()">
+
+⬇ Lihat Teman Lain
+
+</button>
+
+
+</div>
+
+</section>
+
+`
+
+);
+
+
+
+confetti();
+
+
+}
+function showMemories(){
+
+document.body.insertAdjacentHTML(
+
+"beforeend",
+
+`
+
+<section id="memories" class="choose">
+
+<div class="box">
+
+<img src="foto1.jpg" class="memory">
+
+<br><br>
+
+<img src="foto2.jpg" class="memory">
+
+<br><br>
+
+<img src="foto3.jpg" class="memory">
+
+<br><br>
+
+<img src="foto4.jpg" class="memory">
+
+<br><br>
+
+<img src="foto5.jpg" class="memory">
+
+<br><br>
+
+<img src="foto6.jpg" class="memory">
+
+<br><br><br>
+
+<button class="goBtn" onclick="location.reload()">
+🏠 Back To Home
+</button>
+
+</div>
+
+</section>
+
+`
+
+);
+
+document.getElementById("memories").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function confetti(){
+
+let colors=[
+"#FFD84D",
+"#FF4D6D",
+"#4DFF88",
+"#4DA6FF",
+"#B84DFF",
+"#FFFFFF",
+"#FF8C42"
+];
+
+
+for(let i=0;i<200;i++){
+
+let c=document.createElement("div");
+
+c.className="confetti";
+
+
+c.style.background=
+colors[Math.floor(Math.random()*colors.length)];
+
+
+let x=(Math.random()-0.5)*1000;
+let y=(Math.random()-0.5)*800;
+
+
+c.style.setProperty("--x",x+"px");
+c.style.setProperty("--y",y+"px");
+
+
+// bentuk random
+if(Math.random()>0.5){
+
+c.style.borderRadius="50%";
+
+}else{
+
+c.style.borderRadius="3px";
+
+}
+
+
+// ukuran random
+let size=8+Math.random()*15;
+
+c.style.width=size+"px";
+c.style.height=size+"px";
+
+
+document.body.appendChild(c);
+
+
+
+setTimeout(()=>{
+
+c.remove();
+
+},2500);
+
+
+}
+
+}
+
+
+</script>
+
+</body>
+</html>
